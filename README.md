@@ -6,5 +6,5 @@ Boilerplate application based upon react.js and webpack.
 2. For dev:
    - npm run dev to run live reload through localhost:8080 or
    - "webpack" if running through an app server
-3. Production:
+3. For production:
   NODE_ENV=production webpack
