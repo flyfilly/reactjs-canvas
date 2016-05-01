@@ -1,7 +1,9 @@
 import React from "react";
 import SubBox from "./SubBox/SubBox";
 import Title from "./Header/Title";
-
+import AppBar from "material-ui/lib/app-bar";
+import TextField from "material-ui/lib/text-field";
+import FlatButton from "material-ui/lib/flat-button";
 
 /**
   React Component Template with basic examples.
@@ -29,23 +31,37 @@ export default class ContactBox extends React.Component {
     console.log( "lifecycle...render" );
     return( 
       <div>
-        <Title title="My React Component" />
-        
-        <p className="">A simple component created: {this._getDate( )}</p>
-        <ul style={{listStyleType : 'none'}}>
-          {this.state.myList.map( sb => 
-            <li key={sb.id.value}>
-              <SubBox 
-                pic={sb.picture.large}
-                name={`${sb.name.title} ${sb.name.first} ${sb.name.last}`}
-                email={sb.email} />
-              <br/>
-            </li>
-          ) }
-        </ul>
+        <AppBar
+          title="React Boilerplate"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+        />
+        <div className="content">
+          <Title title="My React Component" />
+          
+          <p className="">A simple component created: {this._getDate( )}</p>
+          <ul style={{listStyleType : 'none'}}>
+            {this.state.myList.map( sb => 
+              <li key={sb.id.value}>
+                <SubBox 
+                  pic={sb.picture.large}
+                  name={`${sb.name.title} ${sb.name.first} ${sb.name.last}`}
+                  email={sb.email} />
+                <br/>
+              </li>
+            ) }
+          </ul>
 
-        <input placeholder="example Input...will log to console" ref={(input) => this._input = input} />
-        <button onClick={this._handleClick.bind(this)}>clicked {this.state.clicked} {this._getClickedString( )}</button>
+          <TextField
+            hintText="will log to console"
+            floatingLabelText="example Material Input"
+            ref="_input"
+          />
+
+          <FlatButton 
+            label={`clicked ${this.state.clicked} ${this._getClickedString( )}`}
+            onClick={this._handleClick.bind(this)}
+            secondary={true} />
+        </div>
       </div>
     )
   }
@@ -77,14 +93,14 @@ export default class ContactBox extends React.Component {
 
     };
 
-    xhr.open( "GET", "https://randomuser.me/api/?results=10&nat=us&format=json", true );
+    xhr.open( "GET", "https://randomuser.me/api/?results=3&nat=us&format=json", true );
     xhr.send( );
   }
 
   _handleClick( evt ) {
     evt.preventDefault( );
 
-    console.log( this._input.value );
+    console.log( this.refs._input.getValue( ) );
 
     this.state.clicked++;
     this.setState( {
