@@ -4,7 +4,7 @@ Boilerplate application based upon react.js and webpack.
 ##Instructions
 1. npm install
 2. For dev:
-   - npm run dev to run live reload through localhost:8080 or
+   - "npm run dev" to run live reload through localhost:8080 or
    - "webpack" if running through an app server
 3. For production:
-  NODE_ENV=production webpack
+   - "NODE_ENV=production webpack"
