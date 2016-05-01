@@ -1,11 +1,3 @@
-/*
-to run in dev:
-npm run dev
-
-to run in prod:
-NODE_ENV=production webpack
-*/
-
 var debug   = process.env.NODE_ENV !== "production";
 var webpack = require( 'webpack' );
 var path    = require( 'path' );
